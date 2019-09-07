@@ -11,27 +11,32 @@ const lettersGuessed = []
 let word = getRandWord()
 
 
-const displayWord = function (chosen) {
+const displayWord = function () {
   let wordStr = ""
+  let winStatus = true
   word.split("").forEach(function (letter) {
-    if (letter === chosen || lettersGuessed.indexOf(letter) != -1) {
+    if (lettersGuessed.indexOf(letter) != -1) {
       wordStr += `${letter} `
     } else {
       wordStr += "_ "
+      winStatus = false
     }
   })
-
+  
   document.getElementById('word').textContent = wordStr
 }
 
 document.onkeyup = function (event) {
   if (event.keyCode >= 65 && event.keyCode <= 90) {
-    if (word.includes(event.key)) {
+    if (lettersGuessed.indexOf(event.key) === -1) {
       lettersGuessed.push(event.key)
-      displayWord(event.key)
-      console.log(word)
-      console.log('yes')
+      document.getElementById('letters').textContent = lettersGuessed.join(', ')
+      if (word.includes(event.key)) {
+        displayWord()
+      } else {
+        guesses--
 
+      }
     }
   }
 }
