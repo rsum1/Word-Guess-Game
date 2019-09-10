@@ -1,5 +1,5 @@
 //array of words
-const words = ["Apple", "Banana", "Orange"]
+const words = ["Apple", "Banana", "Orange", "Green", "Red", "Purple", "Zebra", "Ham", "Doctor", "Engineer"]
 
 //gets new random word
 const getRandWord = function () {
